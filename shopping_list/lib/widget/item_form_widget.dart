@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-Color color_label = Colors.teal;
+//Color color_label = Colors.teal;
 Color color_underline = Colors.teal;
 
 class ItemFormWidget extends StatelessWidget {
   final String name;
-  final String amount;
+  final int amount;
   final ValueChanged<String> onChangedName;
   final ValueChanged<String> onChangedAmount;
   final VoidCallback onAddItem;
@@ -13,7 +14,7 @@ class ItemFormWidget extends StatelessWidget {
   const ItemFormWidget({
     Key? key,
     this.name = '',
-    this.amount = '',
+    this.amount = 0,
     required this.onChangedName,
     required this.onChangedAmount,
     required this.onAddItem,
@@ -23,7 +24,7 @@ class ItemFormWidget extends StatelessWidget {
   Widget build(BuildContext context) => Container(
         child: SingleChildScrollView(
           child: Column(
-            mainAxisSize: MainAxisSize.max,
+            mainAxisSize: MainAxisSize.min,
             children: [
               buildName(),
               SizedBox(height: 20),
@@ -36,7 +37,7 @@ class ItemFormWidget extends StatelessWidget {
       );
 
   Widget buildName() => TextFormField(
-        style: TextStyle(color: Colors.white),
+        style: TextStyle(color: Colors.white, fontSize: 18),
         maxLines: 1,
         initialValue: name,
         onChanged: onChangedName,
@@ -47,24 +48,27 @@ class ItemFormWidget extends StatelessWidget {
           return null;
         },
         decoration: InputDecoration(
+          floatingLabelBehavior:
+              FloatingLabelBehavior.never, // To disable zoom out animation
           enabledBorder: UnderlineInputBorder(
             borderSide: BorderSide(color: color_underline),
           ),
           focusedBorder: UnderlineInputBorder(
             borderSide: BorderSide(color: color_underline),
           ),
-          labelText: 'Name',
-          labelStyle: TextStyle(
+          hintText: 'Name',
+          hintStyle: TextStyle(
             fontSize: 18,
-            color: color_label,
+            color: Colors.grey,
           ),
         ),
       );
 
   Widget buildAmount() => TextFormField(
-        style: TextStyle(color: Colors.white),
+        inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+        style: TextStyle(color: Colors.white, fontSize: 18),
         maxLines: 1,
-        initialValue: amount,
+        initialValue: '',
         onChanged: onChangedAmount,
         validator: (amount) {
           if (amount!.isEmpty) {
@@ -73,16 +77,17 @@ class ItemFormWidget extends StatelessWidget {
           return null;
         },
         decoration: InputDecoration(
+          floatingLabelBehavior: FloatingLabelBehavior.never,
           enabledBorder: UnderlineInputBorder(
             borderSide: BorderSide(color: color_underline),
           ),
           focusedBorder: UnderlineInputBorder(
             borderSide: BorderSide(color: color_underline),
           ),
-          labelText: 'Amount',
-          labelStyle: TextStyle(
+          hintText: 'Amount',
+          hintStyle: TextStyle(
             fontSize: 18,
-            color: color_label,
+            color: Colors.grey,
           ),
         ),
       );

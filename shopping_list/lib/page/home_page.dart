@@ -13,15 +13,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // void _incrementAmount(String amount) {
-  //   //var tmp = 0;
-  //   int tmp = int.parse(amount);
-
-  //   setState(() {
-  //     tmp++;
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

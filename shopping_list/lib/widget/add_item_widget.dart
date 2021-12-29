@@ -14,7 +14,7 @@ class AddItemDialogWidget extends StatefulWidget {
 class _AddItemDialogWidgetState extends State<AddItemDialogWidget> {
   final _formkey = GlobalKey<FormState>();
   String name = '';
-  String amount = '';
+  int amount = 0;
 
   @override
   Widget build(BuildContext context) => AlertDialog(
@@ -37,7 +37,7 @@ class _AddItemDialogWidgetState extends State<AddItemDialogWidget> {
               ItemFormWidget(
                 onChangedName: (name) => setState(() => this.name = name),
                 onChangedAmount: (amount) =>
-                    setState(() => this.amount = amount),
+                    setState(() => this.amount = int.parse(amount)),
                 onAddItem: addItem,
               ),
             ],
@@ -59,7 +59,7 @@ class _AddItemDialogWidgetState extends State<AddItemDialogWidget> {
       );
 
       final provider = Provider.of<ItemsProvider>(context, listen: false);
-      provider.addTodo(item);
+      provider.addItem(item);
 
       Navigator.of(context).pop();
       Utils.showSnackBar(context, 'Added the item');

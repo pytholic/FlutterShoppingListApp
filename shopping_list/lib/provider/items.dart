@@ -14,14 +14,14 @@ class ItemsProvider extends ChangeNotifier {
         notifyListeners();
       });
 
-  void addTodo(Item item) => FirebaseApi.createItem(item);
+  void addItem(Item item) => FirebaseApi.createItem(item);
 
   void removeItem(Item item) {
     FirebaseApi.deleteItem(item);
     //Utils.showSnackBar(context, 'Deleted the task');
   }
 
-  void updateItem(Item item, String name, String amount) {
+  void updateItem(Item item, String name, int amount) {
     item.name = name;
     item.amount = amount;
 

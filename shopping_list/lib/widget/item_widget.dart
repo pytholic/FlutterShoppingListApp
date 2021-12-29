@@ -33,16 +33,21 @@ class ItemWidget extends StatelessWidget {
       );
 
   Widget buildItem(BuildContext context) {
+    // Create a main widget container which will contain all other items
     return Container(
       width: double.infinity,
       height: 125,
       color: Colors.blueGrey[800],
       padding: EdgeInsets.all(10),
+
+      // Create stack to place and position widgets
       child: Stack(
         children: <Widget>[
           Positioned(
             top: 5,
             left: 10,
+
+            // A container for "Name" text label
             child: Container(
               //margin: EdgeInsets.only(top: 4),
               child: Text(
@@ -55,6 +60,8 @@ class ItemWidget extends StatelessWidget {
               ),
             ),
           ),
+
+          // Create a positioned Row() to place buttons and amount next to each other
           Positioned(
             bottom: 5,
             right: 5,
@@ -80,7 +87,7 @@ class ItemWidget extends StatelessWidget {
                   Container(
                     //margin: EdgeInsets.only(left: 5, right: 5),
                     child: Text(
-                      item.amount,
+                      item.amount.toString(),
                       style: TextStyle(fontSize: 22, color: Colors.white),
                     ),
                   ),
@@ -91,7 +98,7 @@ class ItemWidget extends StatelessWidget {
                         '+',
                         style: TextStyle(fontSize: 30),
                       ),
-                      onPressed: () {},
+                      onPressed: () {}, //incrementAmount,
                       style: ElevatedButton.styleFrom(
                         primary: Colors.red,
                         shape: CircleBorder(),
@@ -112,4 +119,10 @@ class ItemWidget extends StatelessWidget {
     provider.removeItem(item);
     Utils.showSnackBar(context, 'Deleted the item');
   }
+
+  // void incrementAmount(BuildContext context, Item item) {
+  //   var tmp = int.parse(item.amount);
+  //   tmp++;
+
+  // }
 }
