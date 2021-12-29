@@ -74,13 +74,10 @@ class ItemWidget extends StatelessWidget {
                   Container(
                     //margin: EdgeInsets.only(right: 5),
                     child: ElevatedButton(
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Text(
-                          '-',
-                          style: TextStyle(fontSize: 30),
-                          textAlign: TextAlign.center,
-                        ),
+                      child: Text(
+                        '-',
+                        style: TextStyle(fontSize: 30),
+                        textAlign: TextAlign.center,
                       ),
                       onPressed: () {
                         decrementAmount(context, item);
@@ -92,26 +89,20 @@ class ItemWidget extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    child: Align(
-                      alignment: Alignment.center,
-                      //margin: EdgeInsets.only(left: 5, right: 5),
-                      child: Text(
-                        item.amount.toString(),
-                        style: TextStyle(fontSize: 22, color: Colors.white),
-                        textAlign: TextAlign.center,
-                      ),
+                    //margin: EdgeInsets.only(left: 5, right: 5),
+                    child: Text(
+                      item.amount.toString(),
+                      style: TextStyle(fontSize: 22, color: Colors.white),
+                      textAlign: TextAlign.center,
                     ),
                   ),
                   Container(
                     //margin: EdgeInsets.only(left: 5, right: 5),
                     child: ElevatedButton(
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Text(
-                          '+',
-                          style: TextStyle(fontSize: 30),
-                          textAlign: TextAlign.center,
-                        ),
+                      child: Text(
+                        '+',
+                        style: TextStyle(fontSize: 30),
+                        textAlign: TextAlign.center,
                       ),
                       onPressed: () {
                         incrementAmount(context, item);
