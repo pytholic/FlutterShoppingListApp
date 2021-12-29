@@ -14,11 +14,11 @@ class AddItemDialogWidget extends StatefulWidget {
 class _AddItemDialogWidgetState extends State<AddItemDialogWidget> {
   final _formkey = GlobalKey<FormState>();
   String name = '';
-  int amount = 0;
+  String amount = '';
 
   @override
   Widget build(BuildContext context) => AlertDialog(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.blueGrey[800],
         content: Form(
           key: _formkey,
           child: Column(
@@ -37,7 +37,7 @@ class _AddItemDialogWidgetState extends State<AddItemDialogWidget> {
               ItemFormWidget(
                 onChangedName: (name) => setState(() => this.name = name),
                 onChangedAmount: (amount) =>
-                    setState(() => this.amount = int.parse(amount)),
+                    setState(() => this.amount = amount),
                 onAddItem: addItem,
               ),
             ],

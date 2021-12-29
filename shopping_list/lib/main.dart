@@ -24,9 +24,9 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             //primarySwatch: Colors.pink, // Todo "title text" color
             //primarySwatch: Colors.indigo.shade200,
-            scaffoldBackgroundColor: Color(0xFFf6f5ee),
+            scaffoldBackgroundColor: Colors.black,
             appBarTheme: AppBarTheme(
-              backgroundColor: Colors.deepPurple[300], //.blueAccent[100],
+              backgroundColor: Colors.teal,
             ),
           ),
           home: HomePage(),

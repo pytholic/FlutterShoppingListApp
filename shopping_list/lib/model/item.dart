@@ -9,12 +9,12 @@ class Item {
   DateTime? createdTime;
   String name;
   String id;
-  int amount;
+  String amount;
 
   Item({
     required this.createdTime,
     required this.name,
-    this.amount = 0,
+    required this.amount,
     this.id = '',
   });
 

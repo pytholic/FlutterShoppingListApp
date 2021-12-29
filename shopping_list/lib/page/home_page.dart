@@ -13,6 +13,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  // void _incrementAmount(String amount) {
+  //   //var tmp = 0;
+  //   int tmp = int.parse(amount);
+
+  //   setState(() {
+  //     tmp++;
+  //   });
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +55,7 @@ class _HomePageState extends State<HomePage> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
-        backgroundColor: Colors.black, // "+" button background color
+        backgroundColor: Colors.teal, // "+" button background color
         onPressed: () => showDialog(
           context: context,
           builder: (context) => AddItemDialogWidget(),
@@ -54,6 +63,7 @@ class _HomePageState extends State<HomePage> {
         ),
         child: Icon(Icons.add),
       ),
+      //floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
     );
   }
 }

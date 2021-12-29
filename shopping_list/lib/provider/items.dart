@@ -21,7 +21,7 @@ class ItemsProvider extends ChangeNotifier {
     //Utils.showSnackBar(context, 'Deleted the task');
   }
 
-  void updateItem(Item item, String name, int amount) {
+  void updateItem(Item item, String name, String amount) {
     item.name = name;
     item.amount = amount;
 
