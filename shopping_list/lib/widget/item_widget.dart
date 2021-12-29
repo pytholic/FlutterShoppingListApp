@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:shopping_list/model/item.dart';
 import 'package:shopping_list/provider/items.dart';
 import 'package:shopping_list/utils.dart';
+import 'package:shopping_list/page/home_page.dart';
 import 'dart:ui' as ui;
 
 class ItemWidget extends StatelessWidget {
@@ -76,8 +77,11 @@ class ItemWidget extends StatelessWidget {
                       child: Text(
                         '-',
                         style: TextStyle(fontSize: 30),
+                        textAlign: TextAlign.center,
                       ),
-                      onPressed: () {}, //_incrementAmount,
+                      onPressed: () {
+                        decrementAmount(context, item);
+                      },
                       style: ElevatedButton.styleFrom(
                         primary: Colors.red,
                         shape: CircleBorder(),
@@ -89,6 +93,7 @@ class ItemWidget extends StatelessWidget {
                     child: Text(
                       item.amount.toString(),
                       style: TextStyle(fontSize: 22, color: Colors.white),
+                      textAlign: TextAlign.center,
                     ),
                   ),
                   Container(
@@ -97,8 +102,11 @@ class ItemWidget extends StatelessWidget {
                       child: Text(
                         '+',
                         style: TextStyle(fontSize: 30),
+                        textAlign: TextAlign.center,
                       ),
-                      onPressed: () {}, //incrementAmount,
+                      onPressed: () {
+                        incrementAmount(context, item);
+                      },
                       style: ElevatedButton.styleFrom(
                         primary: Colors.red,
                         shape: CircleBorder(),
@@ -119,10 +127,21 @@ class ItemWidget extends StatelessWidget {
     provider.removeItem(item);
     Utils.showSnackBar(context, 'Deleted the item');
   }
+}
 
-  // void incrementAmount(BuildContext context, Item item) {
-  //   var tmp = int.parse(item.amount);
-  //   tmp++;
+void incrementAmount(BuildContext context, Item item) {
+  final provider = Provider.of<ItemsProvider>(context, listen: false);
+  item.amount++;
+  provider.updateItem(item, item.name, item.amount);
+}
 
-  // }
+void decrementAmount(BuildContext context, Item item) {
+  final provider = Provider.of<ItemsProvider>(context, listen: false);
+  // Add if-else block to avoid negative values
+  if (item.amount > 0) {
+    item.amount--;
+    provider.updateItem(item, item.name, item.amount);
+  } else {
+    return null;
+  }
 }

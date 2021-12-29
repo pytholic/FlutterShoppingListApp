@@ -54,3 +54,25 @@ TextFormField(
 TextFormField(
         inputFormatters: [FilteringTextInputFormatter.digitsOnly],
 ```
+
+## increment functionality
+function used
+```
+void incrementAmount(BuildContext context, Item item) {
+  final provider = Provider.of<ItemsProvider>(context, listen: false);
+  item.amount++;
+  provider.updateItem(item, item.name, item.amount);
+}
+```
+
+what didn't work in ElevatedButton
+```
+onPressed: incrementAmount,
+```
+
+what worked
+```
+onPressed: () {
+                        incrementAmount(context, item);
+                      },
+```
