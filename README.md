@@ -1,63 +1,16 @@
-## Two Floating Buttons
-Use `Row` wrapper.
+# Overview
+A cross-platform **Todo List App** created using `Dart` and `Flutter`.
+
+# App Functionality
+* Add item and amount
+* Increase or decrease the amount using buttons
+* Delete the item
+* Firebase integration
+
+# Dev Notes
+## Increment Function with Buttons
+Function definition:
 ```dart
-floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          FloatingActionButton(
-            backgroundColor: Colors.red,
-            onPressed: () => {},
-            child: const Icon(Icons.add),
-            heroTag: null,
-          ),
-          FloatingActionButton(
-            backgroundColor: Colors.red,
-            onPressed: () => {},
-            child: const Icon(Icons.remove),
-            heroTag: null,
-          ),
-        ],
-      ),
-```
-
-
-## Stack
-Use to place widgets on top of each other.
-
-### Positioning items inside stack
-Use Positioned(). Wrap items inside stack with Positioned and use combination of width, height, top, left, right and bottom.
-
-## Expanded
-You should use Expanded only within a column, row or flex. Otherwise you get following exception.
-```console
-Another exception was thrown: Incorrect use of ParentDataWidget.
-```
-
-## To disable zoom out animation in text fields
-Use FloatingLabelBehavior.never inside InputDecoration will help you hiding your label and instead of 
-labelText you can use hintText so it becomes disappear when you type something.
-```
-TextFormField(
-    decoration: InputDecoration(
-        hintText: "Search",
-        floatingLabelBehavior: FloatingLabelBehavior.never,
-        border: InputBorder.none,
-        suffixIcon: Icon(
-            Icons.search,
-        ),
-    ),
-),
-```
-
-## only digits in input:
-```
-TextFormField(
-        inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-```
-
-## increment functionality
-function used
-```
 void incrementAmount(BuildContext context, Item item) {
   final provider = Provider.of<ItemsProvider>(context, listen: false);
   item.amount++;
@@ -65,14 +18,14 @@ void incrementAmount(BuildContext context, Item item) {
 }
 ```
 
-what didn't work in ElevatedButton
-```
+In `ElevatedButton`, following line didn't work for above function.
+```dart
 onPressed: incrementAmount,
 ```
 
-what worked
-```
+However, replacing it with the following line of code workked.
+```dart
 onPressed: () {
-                        incrementAmount(context, item);
-                      },
+  incrementAmount(context, item);
+  },
 ```
